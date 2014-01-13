@@ -9,7 +9,11 @@ struct KaToken {
 
 class KaLexer {
 public:
-    static int get(const std::string& input) {
-        return -1;
+    static int get(std::istream& data) {
+       char last_char;
+       while (!data.eof()) {
+          data.get(last_char);
+       };
+       return -1;
     }
 };

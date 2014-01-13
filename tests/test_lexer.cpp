@@ -1,8 +1,11 @@
 
+#include <sstream>
+
 #include "gtest/gtest.h"
 
 #include "kalexer.h"
 
 TEST(Lexer, read_eof_token) {
-    ASSERT_EQ(KaLexer::get("EOF"), KaToken::EndOfFile);
+   std::stringstream buffer;
+   ASSERT_EQ(KaLexer::get(buffer), KaToken::EndOfFile);
 }
