@@ -5,6 +5,7 @@ struct KaToken {
     enum {
         EndOfFile = -1,
         DefToken = 10,
+        ExternToken = 20,
     };
 };
 
@@ -19,6 +20,8 @@ public:
           identifier += last_char;
           if (identifier == "def")
              return KaToken::DefToken;
+          if (identifier == "extern")
+             return KaToken::ExternToken;
        };
        return KaToken::EndOfFile;
     }

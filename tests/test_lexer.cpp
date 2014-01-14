@@ -15,3 +15,9 @@ TEST(Lexer, read_def_token) {
    buffer << "def foobar(x)";
    ASSERT_EQ(KaLexer::get(buffer), KaToken::DefToken);
 }
+
+TEST(Lexer, read_extern_token) {
+   std::stringstream buffer;
+   buffer << "extern babar();";
+   ASSERT_EQ(KaLexer::get(buffer), KaToken::ExternToken);
+}
