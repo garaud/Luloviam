@@ -8,6 +8,7 @@ struct KaToken {
     };
 };
 
+//! Lexer class.
 class KaLexer {
 public:
     static int get(std::istream& data) {
@@ -17,8 +18,8 @@ public:
           data.get(last_char);
           identifier += last_char;
           if (identifier == "def")
-             return 10;
+             return KaToken::DefToken;
        };
-       return -1;
+       return KaToken::EndOfFile;
     }
 };
