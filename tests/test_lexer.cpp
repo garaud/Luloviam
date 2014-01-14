@@ -24,3 +24,8 @@ TEST_F(Lexer, read_extern_token) {
    buffer << "extern babar();";
    ASSERT_EQ(KaLexer::get(buffer), KaToken::ExternToken);
 }
+
+TEST_F(Lexer, skip_trailing_whitespaces) {
+   buffer << "     def jazzy(player, year)";
+   ASSERT_EQ(KaLexer::get(buffer), KaToken::DefToken);
+}
