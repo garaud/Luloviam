@@ -16,7 +16,8 @@ public:
        char last_char;
        std::string identifier;
        while (!data.eof()) {
-          data.get(last_char);
+          // Skipping whitespaces flag.
+          data >> std::skipws >> last_char;
           identifier += last_char;
           if (identifier == "def")
              return KaToken::DefToken;
