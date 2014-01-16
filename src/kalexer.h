@@ -10,6 +10,11 @@ struct KaToken {
     };
 };
 
+std::vector<std::string> split_into_word(const std::string& line) {
+   std::vector<std::string> result(3);
+   return result;
+};
+
 //! Lexer class.
 class KaLexer {
 public:

@@ -34,3 +34,9 @@ TEST_F(Lexer, DISABLED_recognizes_float_number) {
    buffer << "12.7";
    ASSERT_EQ(KaLexer::get(buffer), KaToken::NumberToken);
 }
+
+TEST(FuncUtils, split_line_into_word) {
+   std::string line("just three  words");
+   std::vector<std::string> words = split_into_word(line);
+   ASSERT_EQ(3, words.size());
+}
