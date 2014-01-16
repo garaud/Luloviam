@@ -3,7 +3,10 @@ About
 =====
 
 * This code is a version of the LLVM Kaleidoscope tutorial with C++11 features
-and TDD. See http://llvm.org/docs/tutorial/
+  and TDD_. See http://llvm.org/docs/tutorial/
+
+* A word that I keep in mind after reading books about TDD_ is
+  **expressiveness**. I'll try to produce expressive code enough.
 
 * Each tag is related to a tutorial chapter.
 
@@ -14,6 +17,7 @@ and TDD. See http://llvm.org/docs/tutorial/
   <http://pragprog.com/book/lotdd/modern-c-programming-with-test-driven-development>`_
   by Jeff Langr, well written and interesting in my point of view.
 
+.. _TDD: http://en.wikipedia.org/wiki/Test-driven_development
 .. _GTest: http://code.google.com/p/googletest
 
 Compile It
