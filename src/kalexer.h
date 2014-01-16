@@ -6,6 +6,7 @@ struct KaToken {
         EndOfFile = -1,
         DefToken = 10,
         ExternToken = 20,
+        NumberToken = 30,
     };
 };
 

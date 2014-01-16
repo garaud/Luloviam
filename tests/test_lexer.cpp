@@ -29,3 +29,8 @@ TEST_F(Lexer, skip_trailing_whitespaces) {
    buffer << "     def jazzy(player, year)";
    ASSERT_EQ(KaLexer::get(buffer), KaToken::DefToken);
 }
+
+TEST_F(Lexer, recognizes_float_number) {
+   buffer << "12.7";
+   ASSERT_EQ(KaLexer::get(buffer), KaToken::NumberToken);
+}
