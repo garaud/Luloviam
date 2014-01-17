@@ -50,3 +50,8 @@ TEST(FuncUtilIsFloat, handle_signed_float) {
    std::string str_number("-12.05");
    ASSERT_TRUE(is_float(str_number));
 }
+
+TEST(FuncUtilIsFloat, dont_recognize_malformed_str_float) {
+   std::string str_number("45.-05");
+   ASSERT_TRUE(!is_float(str_number));
+}
