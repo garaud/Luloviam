@@ -5,7 +5,7 @@
 #include <iterator>
 
 typedef std::istream_iterator<std::string> sentence_iterator;
-typedef std::vector<std::string> word_container;
+typedef std::vector<std::string> str_container;
 
 struct KaToken {
     enum {
@@ -17,11 +17,11 @@ struct KaToken {
 };
 
 std::vector<std::string> split_into_word(const std::string& line) {
-   word_container words;
+   str_container words;
    std::istringstream stream_line(line);
    std::copy(sentence_iterator(stream_line),
                 sentence_iterator(),
-                std::back_inserter<word_container>(words));
+                std::back_inserter<str_container>(words));
    return words;
 }
 
@@ -29,16 +29,16 @@ std::vector<std::string> split_into_word(const std::string& line) {
 class KaLexer {
 public:
     static int get(std::istream& data) {
-       char last_char;
-       std::string identifier;
        while (!data.eof()) {
-          // Skipping whitespaces flag.
-          data >> std::skipws >> last_char;
-          identifier += last_char;
-          if (identifier == "def")
-             return KaToken::DefToken;
-          if (identifier == "extern")
-             return KaToken::ExternToken;
+          std::string sentence;
+          std::getline(data, sentence);
+          str_container words = split_into_word(sentence);
+          for (auto identifier : words) {
+             if (identifier == "def")
+                return KaToken::DefToken;
+             if (identifier == "extern")
+                return KaToken::ExternToken;
+          }
        };
        return KaToken::EndOfFile;
     }
