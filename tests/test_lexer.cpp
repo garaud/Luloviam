@@ -40,3 +40,9 @@ TEST(FuncUtils, split_line_into_word) {
    std::vector<std::string> words = split_into_word(line);
    ASSERT_EQ(3, words.size());
 }
+
+TEST(FuncUtils, well_recognize_float_number_in_a_string) {
+   std::string str_number("14.702");
+   ASSERT_TRUE(is_float(str_number));
+}
+

@@ -25,6 +25,17 @@ std::vector<std::string> split_into_word(const std::string& line) {
    return words;
 }
 
+bool is_float(const std::string& str_number) {
+   for (auto num : str_number) {
+      if (!std::isdigit(num) &&
+          num != '-' &&
+          num != '.') {
+         return false;
+      }
+   }
+   return true;
+}
+
 //! Lexer class.
 class KaLexer {
 public:
