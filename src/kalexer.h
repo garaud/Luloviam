@@ -7,6 +7,9 @@
 typedef std::istream_iterator<std::string> sentence_iterator;
 typedef std::vector<std::string> str_container;
 
+const int DECIMAL_SEP('.');
+const int MINUS('-');
+
 struct KaToken {
     enum {
         EndOfFile = -1,
@@ -28,8 +31,8 @@ std::vector<std::string> split_into_word(const std::string& line) {
 bool is_float(const std::string& str_number) {
    for (auto num : str_number) {
       if (!std::isdigit(num) &&
-          num != '-' &&
-          num != '.') {
+          num != DECIMAL_SEP &&
+          num != MINUS) {
          return false;
       }
    }
