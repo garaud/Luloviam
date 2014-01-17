@@ -4,6 +4,9 @@
 #include <algorithm>
 #include <iterator>
 
+typedef std::istream_iterator<std::string> sentence_iterator;
+typedef std::vector<std::string> word_container;
+
 struct KaToken {
     enum {
         EndOfFile = -1,
@@ -14,13 +17,13 @@ struct KaToken {
 };
 
 std::vector<std::string> split_into_word(const std::string& line) {
-   std::vector<std::string> words;
+   word_container words;
    std::istringstream stream_line(line);
-   std::copy(std::istream_iterator<std::string>(stream_line),
-             std::istream_iterator<std::string>(),
-             std::back_inserter<std::vector<std::string> >(words));
+   std::copy(sentence_iterator(stream_line),
+                sentence_iterator(),
+                std::back_inserter<word_container>(words));
    return words;
-};
+}
 
 //! Lexer class.
 class KaLexer {
