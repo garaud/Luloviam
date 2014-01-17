@@ -1,5 +1,8 @@
 
 #include <string>
+#include <vector>
+#include <algorithm>
+#include <iterator>
 
 struct KaToken {
     enum {
@@ -11,8 +14,12 @@ struct KaToken {
 };
 
 std::vector<std::string> split_into_word(const std::string& line) {
-   std::vector<std::string> result(3);
-   return result;
+   std::vector<std::string> words;
+   std::istringstream stream_line(line);
+   std::copy(std::istream_iterator<std::string>(stream_line),
+             std::istream_iterator<std::string>(),
+             std::back_inserter<std::vector<std::string> >(words));
+   return words;
 };
 
 //! Lexer class.
