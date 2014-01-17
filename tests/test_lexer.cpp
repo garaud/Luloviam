@@ -41,8 +41,12 @@ TEST(FuncUtils, split_line_into_word) {
    ASSERT_EQ(3, words.size());
 }
 
-TEST(FuncUtils, well_recognize_float_number_in_a_string) {
+TEST(FuncUtilIsFloat, well_recognize_float_number_in_a_string) {
    std::string str_number("14.702");
    ASSERT_TRUE(is_float(str_number));
 }
 
+TEST(FuncUtilIsFloat, handle_signed_float) {
+   std::string str_number("-12.05");
+   ASSERT_TRUE(is_float(str_number));
+}
