@@ -28,7 +28,18 @@ std::vector<std::string> split_into_word(const std::string& line) {
    return words;
 }
 
+bool more_than_one_dot(const std::string& str_number) {
+   int dot_count = 0;
+   for (auto num : str_number) {
+      if (num == DECIMAL_SEP)
+         dot_count += 1;
+   }
+   return dot_count > 1;
+}
+
 bool is_float(const std::string& str_number) {
+   if (more_than_one_dot(str_number))
+       return false;
    // First char: digit, minus or dot.
    char first = str_number.front();
    if (!std::isdigit(first) && first != DECIMAL_SEP
