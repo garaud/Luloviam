@@ -29,10 +29,14 @@ std::vector<std::string> split_into_word(const std::string& line) {
 }
 
 bool is_float(const std::string& str_number) {
-   for (auto num : str_number) {
+   // First char: digit, minus or dot.
+   char first = str_number.front();
+   if (!std::isdigit(first) && first != DECIMAL_SEP
+      && first != MINUS)
+      return false;
+   for (auto num : str_number.substr(1)) {
       if (!std::isdigit(num) &&
-          num != DECIMAL_SEP &&
-          num != MINUS) {
+          num != DECIMAL_SEP) {
          return false;
       }
    }
