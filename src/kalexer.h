@@ -63,6 +63,8 @@ public:
           std::getline(data, sentence);
           str_container words = split_into_word(sentence);
           for (auto identifier : words) {
+             if (is_float(identifier))
+                return KaToken::NumberToken;
              if (identifier == "def")
                 return KaToken::DefToken;
              if (identifier == "extern")
