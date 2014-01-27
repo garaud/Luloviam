@@ -89,10 +89,14 @@ public:
           for (auto identifier : words) {
              if (is_float(identifier))
                 return KaToken::NumberToken;
-             if (identifier == "def")
-                return KaToken::DefToken;
-             if (identifier == "extern")
-                return KaToken::ExternToken;
+             if (is_alnum(identifier)) {
+                if (identifier == "def")
+                   return KaToken::DefToken;
+                else if (identifier == "extern")
+                   return KaToken::ExternToken;
+                else
+                   return KaToken::IdentifierToken;
+             }
           }
        };
        return KaToken::EndOfFile;
