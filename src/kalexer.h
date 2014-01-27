@@ -72,9 +72,11 @@ public:
        while (!data.eof()) {
           std::string sentence;
           std::getline(data, sentence);
-          if (is_commented_line(sentence))
+          if (sentence.empty())
              continue;
           str_container words = split_into_word(sentence);
+          if (is_commented_line(words.front()))
+                continue;
           for (auto identifier : words) {
              if (is_float(identifier))
                 return KaToken::NumberToken;

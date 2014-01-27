@@ -36,7 +36,7 @@ TEST_F(Lexer, recognizes_float_number) {
 }
 
 TEST_F(Lexer, not_take_into_account_commented_line) {
-   buffer << "# def stuff" << std::endl
+   buffer << "  #   def stuff" << std::endl
           << "extern get_name(a, x)" << std::endl;
    ASSERT_EQ(KaLexer::get(buffer), KaToken::ExternToken);
 }
