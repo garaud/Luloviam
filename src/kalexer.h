@@ -66,6 +66,14 @@ bool is_commented_line(const std::string& line) {
    return false;
 }
 
+bool is_alnum(const std::string& word) {
+   for (auto letter : word) {
+      if (!std::isalnum(letter))
+         return false;
+   }
+   return true;
+}
+
 //! Lexer class.
 class KaLexer {
 public:
