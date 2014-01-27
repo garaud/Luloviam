@@ -13,9 +13,10 @@ const int MINUS('-');
 struct KaToken {
     enum {
         EndOfFile = -1,
-        DefToken = -10,
-        ExternToken = -20,
-        NumberToken = -30,
+        IdentifierToken = -10,
+        DefToken = -11,
+        ExternToken = -12,
+        NumberToken = -20,
     };
 };
 

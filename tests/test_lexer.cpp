@@ -30,6 +30,11 @@ TEST_F(Lexer, skip_trailing_whitespaces) {
    ASSERT_EQ(KaLexer::get(buffer), KaToken::DefToken);
 }
 
+TEST_F(Lexer, recognizes_identifier_token) {
+   buffer << "variable = 12.5";
+   ASSERT_EQ(KaLexer::get(buffer), KaToken::IdentifierToken);
+}
+
 TEST_F(Lexer, recognizes_float_number) {
    buffer << "12.7";
    ASSERT_EQ(KaLexer::get(buffer), KaToken::NumberToken);
