@@ -59,6 +59,12 @@ bool is_float(const std::string& str_number) {
    return true;
 }
 
+bool is_commented_line(const std::string& line) {
+   if (line.front() == '#')
+      return true;
+   return false;
+}
+
 //! Lexer class.
 class KaLexer {
 public:
@@ -66,6 +72,8 @@ public:
        while (!data.eof()) {
           std::string sentence;
           std::getline(data, sentence);
+          if (is_commented_line(sentence))
+             continue;
           str_container words = split_into_word(sentence);
           for (auto identifier : words) {
              if (is_float(identifier))

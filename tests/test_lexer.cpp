@@ -35,6 +35,12 @@ TEST_F(Lexer, recognizes_float_number) {
    ASSERT_EQ(KaLexer::get(buffer), KaToken::NumberToken);
 }
 
+TEST_F(Lexer, not_take_into_account_commented_line) {
+   buffer << "# def stuff" << std::endl
+          << "extern get_name(a, x)" << std::endl;
+   ASSERT_EQ(KaLexer::get(buffer), KaToken::ExternToken);
+}
+
 TEST(FuncUtils, split_line_into_word) {
    std::string line("just three  words");
    std::vector<std::string> words = split_into_word(line);
