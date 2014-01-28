@@ -1,9 +1,17 @@
 
+LuLoviam
+########
+
+**LuLoviam** is a version of the LLVM_ tutorial -- just replace each consonant
+by the four following letters: L.L.V.M.
+
+.. _LLVM: http://llvm.org/
+
 About
 =====
 
-* This code is a version of the LLVM Kaleidoscope tutorial with C++11 features
-  and TDD_. See http://llvm.org/docs/tutorial/
+* This code is a version of the LLVM Kaleidoscope tutorial with **C++11**
+  features and TDD_. See http://llvm.org/docs/tutorial/
 
 * A word that I keep in mind after reading books about TDD_ is
   **expressiveness**. I'll try to produce expressive code enough.
