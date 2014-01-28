@@ -74,10 +74,12 @@ bool is_alnum(const std::string& word) {
    return true;
 }
 
+
+
 //! Lexer class.
 class KaLexer {
 public:
-    static int get(std::istream& data) {
+    static int nextToken(std::istream& data) {
        while (!data.eof()) {
           std::string sentence;
           std::getline(data, sentence);

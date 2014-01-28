@@ -12,38 +12,38 @@ public:
 };
 
 TEST_F(Lexer, read_eof_token) {
-   ASSERT_EQ(KaLexer::get(buffer), KaToken::EndOfFile);
+   ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::EndOfFile);
 }
 
 TEST_F(Lexer, read_def_token) {
    buffer << "def foobar(x)";
-   ASSERT_EQ(KaLexer::get(buffer), KaToken::DefToken);
+   ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::DefToken);
 }
 
 TEST_F(Lexer, read_extern_token) {
    buffer << "extern babar();";
-   ASSERT_EQ(KaLexer::get(buffer), KaToken::ExternToken);
+   ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::ExternToken);
 }
 
 TEST_F(Lexer, skip_trailing_whitespaces) {
    buffer << "     def jazzy(player, year)";
-   ASSERT_EQ(KaLexer::get(buffer), KaToken::DefToken);
+   ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::DefToken);
 }
 
 TEST_F(Lexer, recognizes_identifier_token) {
    buffer << "variable = 12.5";
-   ASSERT_EQ(KaLexer::get(buffer), KaToken::IdentifierToken);
+   ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::IdentifierToken);
 }
 
 TEST_F(Lexer, recognizes_float_number) {
    buffer << "12.7";
-   ASSERT_EQ(KaLexer::get(buffer), KaToken::NumberToken);
+   ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::NumberToken);
 }
 
 TEST_F(Lexer, not_take_into_account_commented_line) {
    buffer << "  #   def stuff" << std::endl
           << "extern get_name(a, x)" << std::endl;
-   ASSERT_EQ(KaLexer::get(buffer), KaToken::ExternToken);
+   ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::ExternToken);
 }
 
 TEST(FuncUtils, split_line_into_word) {
