@@ -3,7 +3,7 @@ LuLoviam
 ########
 
 **LuLoviam** is a version of the LLVM_ tutorial -- just replace each consonant
-by the four following letters: L.L.V.M.
+of "tutorial" by the four following letters: L.L.V.M.
 
 .. _LLVM: http://llvm.org/
 
