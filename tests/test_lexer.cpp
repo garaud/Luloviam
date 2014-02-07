@@ -5,6 +5,8 @@
 
 #include "kalexer.h"
 
+const int EQUAL_CHAR('='); // ASCII value 61
+
 // Testing fixture for the lexer.
 class Lexer: public ::testing::Test {
 public:
@@ -44,6 +46,12 @@ TEST_F(Lexer, not_take_into_account_commented_line) {
    buffer << "  #   def stuff" << std::endl
           << "extern get_name(a, x)" << std::endl;
    ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::ExternToken);
+}
+
+TEST_F(Lexer, not_identified_char_must_return_ascii_value) {
+    buffer << "value = 13.37";
+    KaLexer::nextToken(buffer); // Identifier Token
+    ASSERT_EQ(KaLexer::nextToken(buffer), EQUAL_CHAR);
 }
 
 TEST(FuncUtils, split_line_into_word) {
