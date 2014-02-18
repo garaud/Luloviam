@@ -81,11 +81,11 @@ class KaLexer {
 public:
     static int nextToken(std::istream& data) {
         while (!data.eof()) {
-            std::string sentence;
-            std::getline(data, sentence);
-            if (sentence.empty())
+            std::string line;
+            std::getline(data, line);
+            if (line.empty())
                 continue;
-            str_container words = split_into_word(sentence);
+            str_container words = split_into_word(line);
             if (is_commented_line(words.front()))
                 continue;
             for (auto identifier : words) {
