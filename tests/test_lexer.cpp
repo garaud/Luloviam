@@ -49,8 +49,7 @@ TEST_F(Lexer, not_take_into_account_commented_line) {
 }
 
 TEST_F(Lexer, not_identified_char_must_return_unknown_token) {
-    buffer << "value = 13.37";
-    KaLexer::nextToken(buffer); // Identifier Token
+    buffer << "= 13.37";
     ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::Unknown);
 }
 

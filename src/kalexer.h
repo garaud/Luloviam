@@ -98,6 +98,7 @@ public:
                     else
                         return KaToken::IdentifierToken;
                 }
+                return KaToken::Unknown;
             }
         };
         return KaToken::EndOfFile;
