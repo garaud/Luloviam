@@ -10,14 +10,13 @@ typedef std::vector<std::string> str_container;
 const int DECIMAL_SEP('.');
 const int MINUS('-');
 
-struct KaToken {
-    enum {
+enum class KaToken {
         EndOfFile = -1,
         IdentifierToken = -10,
         DefToken = -11,
         ExternToken = -12,
         NumberToken = -20,
-    };
+        Unknown = -99,
 };
 
 std::vector<std::string> split_into_word(const std::string& line) {
@@ -79,7 +78,7 @@ bool is_alnum(const std::string& word) {
 //! Lexer class.
 class KaLexer {
 public:
-    static int nextToken(std::istream& data) {
+    static KaToken nextToken(std::istream& data) {
         while (!data.eof()) {
             std::string line;
             std::getline(data, line);

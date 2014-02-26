@@ -48,10 +48,10 @@ TEST_F(Lexer, not_take_into_account_commented_line) {
     ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::ExternToken);
 }
 
-TEST_F(Lexer, not_identified_char_must_return_ascii_value) {
+TEST_F(Lexer, not_identified_char_must_return_unknown_token) {
     buffer << "value = 13.37";
     KaLexer::nextToken(buffer); // Identifier Token
-    ASSERT_EQ(KaLexer::nextToken(buffer), EQUAL_CHAR);
+    ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::Unknown);
 }
 
 TEST(FuncUtils, split_line_into_word) {
