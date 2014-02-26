@@ -53,6 +53,13 @@ TEST_F(Lexer, not_identified_char_must_return_unknown_token) {
     ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::Unknown);
 }
 
+TEST_F(Lexer, consecutive_call_return_the_well_serie_of_tokens) {
+    buffer << "babar = 23.0";
+    ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::IdentifierToken);
+    ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::Unknown);
+    ASSERT_EQ(KaLexer::nextToken(buffer), KaToken::NumberToken);
+}
+
 TEST(FuncUtils, split_line_into_word) {
     std::string line("just three  words");
     std::vector<std::string> words = split_into_word(line);

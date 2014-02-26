@@ -19,9 +19,6 @@ Tests List
 
 List of tests to write:
 
-* Consecutive 'nextToken' should work (for now fail because we read a full line
-  for a single 'nextToken' call).
-
 * Line with no whitespace should return the well token,
   e.g. ``name=12.3``. Should **fail** because I read line by line and word by word
   (instead of char by char).
