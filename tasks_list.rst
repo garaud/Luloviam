@@ -9,10 +9,6 @@ Source code
 
 * Store the number (float) related to the token "number".
 
-* Rename a few attributes of the enum class ``KaToken`` ? The name 'token' is
-  already in the name of the class. Maybe it's not necessary to use this word as
-  part of the attributes such as ``DefToken`` or ``IdentifierToken``.
-
 * Refactoring: read char by char instead of word by word? Or keep static
   attributes to store the line and the stream cursor?
 

@@ -5,10 +5,10 @@
 
 enum class KaToken {
         EndOfFile = -1,
-        IdentifierToken = -10,
-        DefToken = -11,
-        ExternToken = -12,
-        NumberToken = -20,
+        Identifier = -10,
+        Definition = -11,
+        Extern = -12,
+        Number = -20,
         Unknown = -99,
 };
 
@@ -27,14 +27,14 @@ public:
                 continue;
             for (auto identifier : words) {
                 if (is_float(identifier))
-                    return KaToken::NumberToken;
+                    return KaToken::Number;
                 if (is_alnum(identifier)) {
                     if (identifier == "def")
-                        return KaToken::DefToken;
+                        return KaToken::Definition;
                     else if (identifier == "extern")
-                        return KaToken::ExternToken;
+                        return KaToken::Extern;
                     else
-                        return KaToken::IdentifierToken;
+                        return KaToken::Identifier;
                 }
                 return KaToken::Unknown;
             }
