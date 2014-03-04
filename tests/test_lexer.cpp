@@ -17,7 +17,7 @@ TEST_F(Lexer, read_eof_token) {
     ASSERT_EQ(KaToken::EndOfFile, KaLexer::nextToken(buffer));
 }
 
-TEST_F(Lexer, read_def_token) {
+TEST_F(Lexer, read_definition_token) {
     buffer << "def foobar(x)";
     ASSERT_EQ(KaToken::Definition, KaLexer::nextToken(buffer));
 }
