@@ -58,6 +58,30 @@ bool is_commented_line(const std::string& line) {
     return false;
 }
 
+
+bool is_comment(const std::string& word) {
+    if (word.front() == '#')
+        return true;
+    return false;
+}
+
+void skipline(std::istream& buf) {
+    std::string useless;
+    std::getline(buf, useless);
+}
+
+std::string next_valid_word(std::istream_iterator<std::string>& itstream) {
+    if (itstream == std::istream_iterator<std::string>())
+        return "";
+    std::string word = *itstream;
+    if (!is_comment(word)) {
+        ++itstream;
+        return word;
+    }
+    ++itstream;
+    return next_valid_word(itstream);
+}
+
 bool is_alnum(const std::string& word) {
     for (auto letter : word) {
         if (!std::isalnum(letter))

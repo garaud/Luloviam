@@ -11,6 +11,18 @@ TEST(FuncUtils, split_line_into_word) {
     ASSERT_EQ(3, words.size());
 }
 
+TEST(FuncUtils, next_valid_word) {
+    std::istringstream buf("just # three  words\n");
+    std::istream_iterator<std::string> it(buf);
+    std::string first = next_valid_word(it);
+    std::string second = next_valid_word(it);
+    std::string third = next_valid_word(it);
+    ASSERT_EQ("just", first);
+    ASSERT_EQ("three", second);
+    ASSERT_EQ("words", third);
+    ASSERT_EQ("", next_valid_word(it));
+}
+
 TEST(FuncUtilsIsAlNum, recognize_alnum_word) {
     std::string word = "nameJohn12";
     ASSERT_TRUE(is_alnum(word));
