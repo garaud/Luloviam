@@ -17,28 +17,22 @@ enum class KaToken {
 class KaLexer {
 public:
     static KaToken nextToken(std::istream& data) {
-        while (!data.eof()) {
-            std::string line;
-            std::getline(data, line);
-            if (line.empty())
-                continue;
-            str_container words = split_into_word(line);
-            if (is_commented_line(words.front()))
-                continue;
-            for (auto identifier : words) {
-                if (is_float(identifier))
-                    return KaToken::Number;
-                if (is_alnum(identifier)) {
-                    if (identifier == "def")
-                        return KaToken::Definition;
-                    else if (identifier == "extern")
-                        return KaToken::Extern;
-                    else
-                        return KaToken::Identifier;
-                }
-                return KaToken::Unknown;
+        if (!data.eof()) {
+            std::istream_iterator<std::string> itstream(data);
+            std::string word = next_word(itstream);
+            if (word == "") return KaToken::EndOfFile;
+            if (is_float(word))
+                return KaToken::Number;
+            if (is_alnum(word)) {
+                if (word == "def")
+                    return KaToken::Definition;
+                else if (word == "extern")
+                    return KaToken::Extern;
+                else
+                    return KaToken::Identifier;
             }
-        };
+            return KaToken::Unknown;
+        }
         return KaToken::EndOfFile;
     }
 };

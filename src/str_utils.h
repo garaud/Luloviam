@@ -70,16 +70,12 @@ void skipline(std::istream& buf) {
     std::getline(buf, useless);
 }
 
-std::string next_valid_word(std::istream_iterator<std::string>& itstream) {
+std::string next_word(std::istream_iterator<std::string>& itstream) {
     if (itstream == std::istream_iterator<std::string>())
         return "";
     std::string word = *itstream;
-    if (!is_comment(word)) {
-        ++itstream;
-        return word;
-    }
     ++itstream;
-    return next_valid_word(itstream);
+    return word;
 }
 
 bool is_alnum(const std::string& word) {
