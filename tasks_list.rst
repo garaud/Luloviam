@@ -9,9 +9,6 @@ Source code
 
 * Store the number (float) related to the token "number".
 
-* Refactoring: read char by char instead of word by word? Or keep static
-  attributes to store the line and the stream cursor?
-
 
 Tests List
 ==========

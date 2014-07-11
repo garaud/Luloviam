@@ -18,9 +18,12 @@ class KaLexer {
 public:
     static KaToken nextToken(std::istream& data) {
         std::string word;
-        if (!data.eof()) {
-            // std::istream_iterator<std::string> itstream(data);
+        while (!data.eof()) {
             word = next_word(data);
+            if (is_comment(word)) {
+                skipline(data);
+                continue;
+            }
             if (word == "") return KaToken::EndOfFile;
             if (is_float(word))
                 return KaToken::Number;
