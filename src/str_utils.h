@@ -70,11 +70,9 @@ void skipline(std::istream& buf) {
     std::getline(buf, useless);
 }
 
-std::string next_word(std::istream_iterator<std::string>& itstream) {
-    if (itstream == std::istream_iterator<std::string>())
-        return "";
-    std::string word = *itstream;
-    ++itstream;
+std::string next_word(std::istream& stream) {
+    std::string word;
+    stream >> word;
     return word;
 }
 

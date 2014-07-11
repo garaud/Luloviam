@@ -13,27 +13,22 @@ TEST(FuncUtils, split_line_into_word) {
 
 TEST(FuncUtils, next_word) {
     std::istringstream buf("just # three  words\n");
-    std::istream_iterator<std::string> it(buf);
-    std::string first = next_word(it);
-    std::string comment = next_word(it);
-    std::string second = next_word(it);
-    std::string third = next_word(it);
+    std::string first = next_word(buf);
+    std::string comment = next_word(buf);
+    std::string second = next_word(buf);
+    std::string third = next_word(buf);
     ASSERT_EQ("just", first);
     ASSERT_EQ("#", comment);
     ASSERT_EQ("three", second);
     ASSERT_EQ("words", third);
-    ASSERT_EQ("", next_word(it));
+    ASSERT_EQ("", next_word(buf));
 }
 
 TEST(FuncUtils, skipline) {
     std::istringstream buf("just # three  words\nSecond line");
-    std::istream_iterator<std::string> it(buf);
-    next_word(it);
+    next_word(buf);
     skipline(buf);
-    std::string c;
-    buf >> c;
-    std::cout << c << std::endl;
-    std::string word = next_word(it);
+    std::string word = next_word(buf);
     ASSERT_EQ("Second", word);
 }
 
