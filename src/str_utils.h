@@ -21,7 +21,7 @@ bool more_than_one_dot(const std::string& str_number) {
     return dot_count > 1;
 }
 
-bool first_char_is_not_valid(const std::string str_number) {
+bool first_char_is_not_valid_float(const std::string str_number) {
     char first = str_number.front();
     if (!std::isdigit(first) && first != DECIMAL_SEP
         && first != MINUS)
@@ -32,7 +32,7 @@ bool first_char_is_not_valid(const std::string str_number) {
 bool is_float(const std::string& str_number) {
     if (more_than_one_dot(str_number))
         return false;
-    if (first_char_is_not_valid(str_number))
+    if (first_char_is_not_valid_float(str_number))
         return false;
     for (auto num : str_number.substr(1)) {
         if (!std::isdigit(num) &&
