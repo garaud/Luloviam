@@ -32,6 +32,17 @@ TEST(FuncUtilsIsAlNum, recognize_alnum_word) {
     ASSERT_TRUE(is_alnum(word));
 }
 
+TEST(FuncUtilIsFloat, valid_and_not_valid_float_first_char) {
+    std::string minus("-");
+    std::string dot(".");
+    std::string percent("%");
+    std::string letter("c");
+    ASSERT_TRUE(!first_char_is_not_valid_float(minus));
+    ASSERT_TRUE(!first_char_is_not_valid_float(dot));
+    ASSERT_TRUE(first_char_is_not_valid_float(percent));
+    ASSERT_TRUE(first_char_is_not_valid_float(letter));
+}
+
 TEST(FuncUtilIsFloat, well_recognize_float_number_in_a_string) {
     std::string str_number("14.702");
     ASSERT_TRUE(is_float(str_number));
