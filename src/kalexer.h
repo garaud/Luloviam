@@ -1,5 +1,6 @@
 
 #include <string>
+#include <limits>
 
 #include "str_utils.h"
 
@@ -26,7 +27,10 @@ public:
             }
             if (word == "") return KaToken::EndOfFile;
             if (is_float(word))
+            {
+                current_number = std::stod(word);
                 return KaToken::Number;
+            }
             if (is_alnum(word)) {
                 if (word == "def")
                     return KaToken::Definition;
@@ -39,4 +43,8 @@ public:
         }
         return KaToken::EndOfFile;
     }
+    // Attributes.
+    static double current_number;
 };
+
+double KaLexer::current_number = std::numeric_limits<double>::quiet_NaN();

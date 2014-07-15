@@ -7,9 +7,6 @@ Source code
 
 * Store the string/char related to a returned Token.
 
-* Store the number (float) related to the token "number".
-
-
 Tests List
 ==========
 
