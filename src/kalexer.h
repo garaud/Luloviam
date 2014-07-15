@@ -32,6 +32,7 @@ public:
                 return KaToken::Number;
             }
             if (is_alnum(word)) {
+                current_word = word;
                 if (word == "def")
                     return KaToken::Definition;
                 else if (word == "extern")
@@ -39,12 +40,15 @@ public:
                 else
                     return KaToken::Identifier;
             }
+            current_word = word;
             return KaToken::Unknown;
         }
         return KaToken::EndOfFile;
     }
     // Attributes.
     static double current_number;
+    static std::string current_word;
 };
 
 double KaLexer::current_number = std::numeric_limits<double>::quiet_NaN();
+std::string KaLexer::current_word = "";
