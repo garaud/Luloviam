@@ -31,7 +31,7 @@ About
 Compile It
 ==========
 
-* I use CMake to compile the code. So just do:
+* I use CMake_ to compile the code. So just do:
 
 ::
 
@@ -39,7 +39,7 @@ Compile It
   > cmake /path/to/source
   > make
 
-* Test on Debian with GCC (4.7, 4.8) and Clang (3.2, 3.3) --- I really don't
+* Test on Debian with GCC (4.7, 4.8, 4.9) and Clang (3.2, 3.3) --- I really don't
   care about other compilers. Thus I've not tested.
 
 * I use the Debian package of GTest (where the sources are
@@ -47,6 +47,8 @@ Compile It
   find the GTest source at ``/usr/src/gtest``. I could improve the CMake
   ExternalProject configuration in order to find the source with a dedicated
   URL.
+
+.. _CMake: http://www.cmake.org/
 
 Launch It
 =========
