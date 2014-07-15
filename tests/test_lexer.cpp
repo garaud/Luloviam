@@ -59,3 +59,10 @@ TEST_F(Lexer, consecutive_call_return_the_well_serie_of_tokens) {
     ASSERT_EQ(KaToken::Unknown, KaLexer::nextToken(buffer));
     ASSERT_EQ(KaToken::Number, KaLexer::nextToken(buffer));
 }
+
+TEST_F(Lexer, get_value_from_the_number_token)
+{
+    buffer << "42.";
+    KaLexer::nextToken(buffer);
+    ASSERT_EQ(42., KaLexer::current_number);
+}
