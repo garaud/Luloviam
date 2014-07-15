@@ -66,3 +66,12 @@ TEST_F(Lexer, get_value_from_the_number_token)
     KaLexer::nextToken(buffer);
     ASSERT_EQ(42., KaLexer::current_number);
 }
+
+TEST_F(Lexer, get_string_from_the_identifier_or_unknown_token)
+{
+    buffer << "name = 'Miles'";
+    KaLexer::nextToken(buffer);
+    ASSERT_EQ("name", KaLexer::current_word);
+    KaLexer::nextToken(buffer);
+    ASSERT_EQ("=", KaLexer::current_word);
+}
