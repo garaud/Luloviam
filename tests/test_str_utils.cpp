@@ -5,11 +5,6 @@
 
 #include "str_utils.h"
 
-TEST(FuncUtils, split_line_into_word) {
-    std::string line("just three  words");
-    std::vector<std::string> words = split_into_word(line);
-    ASSERT_EQ(3, words.size());
-}
 
 TEST(FuncUtils, next_word) {
     std::istringstream buf("just # three  words\n");
@@ -31,7 +26,6 @@ TEST(FuncUtils, skipline) {
     std::string word = next_word(buf);
     ASSERT_EQ("Second", word);
 }
-
 
 TEST(FuncUtilsIsAlNum, recognize_alnum_word) {
     std::string word = "nameJohn12";

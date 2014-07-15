@@ -12,15 +12,6 @@ typedef std::istream_iterator<std::string> sentence_iterator;
 typedef std::vector<std::string> str_container;
 
 
-std::vector<std::string> split_into_word(const std::string& line) {
-    str_container words;
-    std::istringstream stream_line(line);
-    std::copy(sentence_iterator(stream_line),
-              sentence_iterator(),
-              std::back_inserter<str_container>(words));
-    return words;
-}
-
 bool more_than_one_dot(const std::string& str_number) {
     int dot_count = 0;
     for (auto num : str_number) {
@@ -51,13 +42,6 @@ bool is_float(const std::string& str_number) {
     }
     return true;
 }
-
-bool is_commented_line(const std::string& line) {
-    if (line.front() == '#')
-        return true;
-    return false;
-}
-
 
 bool is_comment(const std::string& word) {
     if (word.front() == '#')
